@@ -30,32 +30,100 @@ public class Main {
 
         Cliente cliente = new Cliente("Chris", "133.245.987-65", "chrislima@gmail.com", "7070-7070");
 
+        //Variaveis para guardar os estados:
+        Filme filmeEscolhido = null;
+        Sala salaEscolhida = null;
+        Sessao sessaoEscolhida = null;
+        boolean ingressoComprado = false;
 
         do {
-            System.out.println("\n===== CINE POO =====");
+            System.out.println("\n===== CINE POO: Escolha uma Opção =====");
             System.out.println("1 - Filmes em Cartaz ");
-            System.out.println("2 - Escolher Sala");
-            System.out.println("3 - Escolher Sessão");
-            System.out.println("4 - Comprar Ingressos");
-            System.out.println("5 - Cancelar Reserva");
+            System.out.println("2 - Escolher Filme ");
+            System.out.println("3 - Escolher Sala");
+            System.out.println("4 - Escolher Sessão");
+            System.out.println("5 - Comprar Ingressos");
+            System.out.println("6 - Cancelar Reserva");
             System.out.println("0 - Sair");
+            System.out.println("==========================================");
 
             op = entrada.nextInt();
 
             switch (op) {
                 case 1:
                     //Filmes em Cartaz
+                    System.out.println("===== Filmes em Cartaz =====");
+                    for (int i = 0; i < filmes.length; i++){
+                        System.out.println((i + 1) + " " + filmes[i].getTitulo());
+                    }
+                    System.out.println("==========================================");
                     break;
+
                 case 2:
-                    //Escolher Sala
+                    //Escolher filme
+                    int escolhaFilme = -1;
+
+                    do{
+                        System.out.println("\n===== Escolha um Filme =====");
+
+                        for (int i = 0; i < filmes.length; i++){
+                            System.out.println((i + 1) + " " + filmes[i].getTitulo());
+                        }
+
+                        System.out.println("==========================================");
+
+                        System.out.println("Digite o numero do filme: ");
+                        escolhaFilme = entrada.nextInt();
+
+                        if (escolhaFilme < 1 || escolhaFilme > filmes.length) {
+                            System.out.println("Opção inválida! Tente novamente.");
+                        }
+                    }while(escolhaFilme < 1 || escolhaFilme > filmes.length);
+
+
+                    filmeEscolhido = filmes[escolhaFilme - 1];
+                    System.out.println("Filme Escolhido: " + filmeEscolhido.getTitulo());
                     break;
+
                 case 3:
-                    //Escolher Sessão
+                    //Escolher sala
+
+                    int escolhaSala;
+
+                    System.out.println("============= Escolha um Sala ===========");
+
+                    for (int i = 0; i < salas.length; i++) {
+                        System.out.println((i+1) + " - Sala " + salas[i].getIdSala() + " (" + salas[i].getCapacidade() + " lugares)");
+                    }
+
+                    System.out.println("==========================================");
+
+                    escolhaSala = entrada.nextInt();
+                    salaEscolhida = salas[escolhaSala - 1];
+
+                    int numAssento;
+
+                    //Loop de Escolha do Assento
+                    do {
+
+                        salaEscolhida.imprimirMapa();
+                        System.out.println("Digite o numero do assento desejado: ");
+                        numAssento = entrada.nextInt();
+
+                        if (!salaEscolhida.ocuparAssentoPorNumero(numAssento)){
+                            System.out.println("Assento já ocupado! Tente novamente.");
+                        }
+                    }while(!salaEscolhida.ocuparAssentoPorNumero(numAssento));
+                    System.out.println("Assento reservado com sucesso!");
                     break;
+
                 case 4:
-                    //Comprar Ingressos
+                    //Comprar sessão
                     break;
                 case 5:
+                    //Cancelar ingresso
+                    break;
+                case 6:
                     //Cancelar Reserva
                     break;
                 case 0:
