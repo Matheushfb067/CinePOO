@@ -1,9 +1,9 @@
 public class Sessao {
 
     // Atributos da sessão
-    protected int numSessao;
-    protected String data;
-    protected String horario;
+    private int numSessao;
+    private String data;
+    private String horario;
 
     // construtor
     public Sessao(int numSessao, String data, String horario) {

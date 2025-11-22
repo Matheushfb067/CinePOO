@@ -104,24 +104,30 @@ public class Main {
                     int numAssento;
 
                     //Loop de Escolha do Assento
+                    boolean sucesso;
                     do {
 
                         salaEscolhida.imprimirMapa();
                         System.out.println("Digite o numero do assento desejado: ");
                         numAssento = entrada.nextInt();
 
-                        if (!salaEscolhida.ocuparAssentoPorNumero(numAssento)){
+                        sucesso = salaEscolhida.ocuparAssentoPorNumero(numAssento);
+
+                        if (!sucesso){
                             System.out.println("Assento já ocupado! Tente novamente.");
                         }
-                    }while(!salaEscolhida.ocuparAssentoPorNumero(numAssento));
+                    }while(!sucesso);
                     System.out.println("Assento reservado com sucesso!");
                     break;
 
                 case 4:
-                    //Comprar sessão
+                    //Escolher sessão
+
+
                     break;
                 case 5:
                     //Cancelar ingresso
+
                     break;
                 case 6:
                     //Cancelar Reserva

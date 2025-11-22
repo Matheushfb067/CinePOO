@@ -22,17 +22,17 @@ public class Sala {
         int numero = 1;
         for (int i = 0; i < linhas; i++) {
             for (int j = 0; j < colunas; j++) {
-                assentos[i][j] = numero++;  // Assentos numerados 1…capacidade
+                assentos[i][j] = numero++;
             }
         }
 
         Random rand = new Random();
-        int ocupados = capacidade / 5; // 20%
+        int ocupados = capacidade / 5;
 
         for (int i = 0; i < ocupados; i++) {
             int r = rand.nextInt(linhas);
             int c = rand.nextInt(colunas);
-            assentos[r][c] = 0;  // assento ocupado
+            assentos[r][c] = -1;  // assento ocupado
         }
     }
 
@@ -50,17 +50,18 @@ public class Sala {
     }
 
     public void imprimirMapa() {
-        System.out.println("\n===== MAPA DA SALA " + idSala + " =====");
+        System.out.println("========================= MAPA DA SALA " + idSala + " =========================");
         for (int i = 0; i < assentos.length; i++) {
             for (int j = 0; j < assentos[0].length; j++) {
                 if (assentos[i][j] == -1) {
                     System.out.print("[ XX ] "); // ocupado
                 } else {
-                    System.out.printf("[%3d] ", assentos[i][j]); // disponível
+                    System.out.printf("[%3d ] ", assentos[i][j]); // disponível
                 }
             }
             System.out.println();
         }
+        System.out.println("===================================================================");
     }
 
     public int getCapacidade() {
