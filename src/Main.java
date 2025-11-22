@@ -93,7 +93,7 @@ public class Main {
                     System.out.println("============= Escolha um Sala ===========");
 
                     for (int i = 0; i < salas.length; i++) {
-                        System.out.println((i+1) + " - Sala " + salas[i].getIdSala() + " (" + salas[i].getCapacidade() + " lugares)");
+                        System.out.println((i+1) + "Sala " + salas[i].getIdSala() + " (" + salas[i].getCapacidade() + " lugares)");
                     }
 
                     System.out.println("==========================================");
@@ -122,11 +122,67 @@ public class Main {
 
                 case 4:
                     //Escolher sessão
+                    int escolhaSessao = -1;
 
+                    do{
+                        System.out.println("============= Escolha um Sessão ===========");
+                        for (int i = 0; i < sessao.length; i++){
+                            System.out.println((i + 1) + " Sessão " + sessao[i].getNumSessao() + " | " + sessao[i].getHorario());
+                        }
 
+                        System.out.println("==========================================");
+
+                        System.out.println("Digite o numero da sessão: ");
+                        escolhaSessao = entrada.nextInt();
+
+                        if (escolhaSessao < 1 || escolhaSessao > sessao.length){
+                            System.out.println("Sessão invalida! Tente novamente.");
+                        }
+                    }while(escolhaSessao < 1 || escolhaSessao > sessao.length);
+                    sessaoEscolhida = sessao[escolhaSessao - 1];
+                    System.out.println("Sessão Escolhida: " + sessaoEscolhida.getHorario());
                     break;
+
                 case 5:
-                    //Cancelar ingresso
+                    //Comprar ingresso
+                    while(filmeEscolhido == null || salaEscolhida == null || sessaoEscolhida == null){
+                        System.out.println("Você ainda não selecionou todas as opções!");
+
+                        if (filmeEscolhido == null)
+                            System.out.println("- Escolha um FILME (opção 1 no menu)");
+                        if (salaEscolhida == null)
+                            System.out.println("- Escolha uma SALA (opção 2 no menu)");
+                        if (sessaoEscolhida == null)
+                            System.out.println("- Escolha uma SESSÃO (opção 3 no menu)");
+
+                        System.out.println("Retornando ao menu principal...");
+                        break;
+                    }
+
+                    if(filmeEscolhido == null || salaEscolhida == null || sessaoEscolhida == null){
+                        break;
+                    }
+
+                    System.out.println("===== RESUMO DA COMPRA =====");
+                    System.out.println("Filme: " + filmeEscolhido.getTitulo());
+                    System.out.println("Sala: " + salaEscolhida.getIdSala());
+                    System.out.println("Sessão: " + sessaoEscolhida.getHorario());
+                    System.out.println("Assento reservado!");
+
+                    int tipoPagamento = entrada.nextInt();
+                    Pagamento pagamento = null;
+
+                    switch (tipoPagamento){
+                        case 1:
+                            System.out.println("Número do Cartão: ");
+                            String num = entrada.next();
+
+                            System.out.println("Validade (MM/AA): ");
+                            String val = entrada.next();
+
+                            System.out.println("CVV: ");
+                            String cvv = entrada.next();
+                    }
 
                     break;
                 case 6:
