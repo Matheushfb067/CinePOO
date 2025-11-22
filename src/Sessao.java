@@ -12,6 +12,10 @@ public class Sessao {
         this.horario = horario;
     }
 
+    public void escolherSessão(){
+
+    }
+
     // Getters e Setters
     public int getNumSessao() {
         return numSessao;
@@ -35,15 +39,5 @@ public class Sessao {
 
     public void setHorario(String horario) {
         this.horario = horario;
-    }
-
-    // facilitando exibicao e testes
-    @Override
-    public String toString() {
-        return "Sessao{" +
-                "numSessao=" + numSessao +
-                ", data='" + data + '\'' +
-                ", horario='" + horario + '\'' +
-                '}';
     }
 }

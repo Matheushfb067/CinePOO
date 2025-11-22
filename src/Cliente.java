@@ -12,10 +12,11 @@ public class Cliente {
     }
 
     public void comprarIngresso(){
-
+        System.out.println("O cliente " + nome + " comprou um ingresso.");
     }
 
     public void cancelarReserva(){
+        System.out.println("Reserva cancelada para o cliente " + nome);
 
     }
 

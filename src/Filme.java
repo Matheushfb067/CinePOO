@@ -5,15 +5,21 @@ public class Filme {
     private int duracao;
     private String genero;
     private int classificacao;
-    private String diretor;
 
-    // Construtores
-    public Filme(String titulo, int duracao, String genero, int classificacao, String diretor) {
+    // Construtor
+    public Filme(String titulo, int duracao, String genero, int classificacao ) {
         this.titulo = titulo;
         this.duracao = duracao;
         this.genero = genero;
         this.classificacao = classificacao;
-        this.diretor = diretor;
+    }
+
+    // Exibição de dados
+    public void mostrarInfo() {
+        System.out.println("Título: " + titulo);
+        System.out.println("Duração: " + duracao + " min");
+        System.out.println("Gênero: " + genero);
+        System.out.println("Classificação: " + classificacao + " anos");
     }
 
     // Getters e Setters
@@ -47,22 +53,5 @@ public class Filme {
 
     public void setClassificacao(int classificacao) {
         this.classificacao = classificacao;
-    }
-
-    public String getDiretor() {
-        return diretor;
-    }
-
-    public void setDiretor(String diretor) {
-        this.diretor = diretor;
-    }
-
-    // Exibição de dados
-    public void mostrarInfo() {
-        System.out.println("Título: " + titulo);
-        System.out.println("Duração: " + duracao + " min");
-        System.out.println("Gênero: " + genero);
-        System.out.println("Classificação: " + classificacao + " anos");
-        System.out.println("Diretor: " + diretor);
     }
 }
