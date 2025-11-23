@@ -16,8 +16,6 @@
 
 ---
 
-
-
 ## 💻 Funcionalidades Principais
 
 ### O sistema oferece uma experiência completa de cinema, permitindo ao usuário:
