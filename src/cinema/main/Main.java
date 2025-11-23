@@ -51,9 +51,9 @@ public class Main {
         do {
             System.out.println("===== CINE POO: Escolha uma Opção =====");
             System.out.println("1 - Filmes em Cartaz ");
-            System.out.println("2 - Escolher Cinema.Modelo.Filme ");
-            System.out.println("3 - Mostrar Informações do Cinema.Modelo.Filme");
-            System.out.println("4 - Escolher Cinema.Modelo.Sala");
+            System.out.println("2 - Escolher Filme ");
+            System.out.println("3 - Mostrar Informações do Filme");
+            System.out.println("4 - Escolher Sala");
             System.out.println("5 - Escolher Sessão");
             System.out.println("6 - Comprar Ingressos");
             System.out.println("7 - Cancelar Reserva");
@@ -79,6 +79,7 @@ public class Main {
                         System.out.println((i + 1) + " " + filmes[i].getTitulo());
                     }
                     System.out.println("==========================================");
+                    System.out.println();
                     break;
 
                 case 2:
@@ -104,7 +105,8 @@ public class Main {
 
 
                     filmeEscolhido = filmes[escolhaFilme - 1];
-                    System.out.println("Cinema.Modelo.Filme Escolhido: " + filmeEscolhido.getTitulo());
+                    System.out.println("Filme Escolhido: " + filmeEscolhido.getTitulo());
+                    System.out.println();
                     break;
                 case 3:
                     //Mostrar informações do filme
@@ -115,16 +117,17 @@ public class Main {
                         filmeEscolhido.mostrarInfo();
                         System.out.println("================================");
                     }
+                    System.out.println();
                     break;
                 case 4:
                     //Escolher sala
 
                     int escolhaSala;
 
-                    System.out.println("============= Escolha um Cinema.Modelo.Sala ===========");
+                    System.out.println("============= Escolha uma Sala ===========");
 
                     for (int i = 0; i < salas.length; i++) {
-                        System.out.println((i+1) + " Cinema.Modelo.Sala " + salas[i].getIdSala() + " (" + salas[i].getCapacidade() + " lugares)");
+                        System.out.println((i+1) + " Sala " + salas[i].getIdSala() + " (" + salas[i].getCapacidade() + " lugares)");
                     }
 
                     System.out.println("==========================================");
@@ -160,6 +163,7 @@ public class Main {
                     assentoReservado = numAssento;
 
                     System.out.println("Assento reservado com sucesso!");
+                    System.out.println();
                     break;
 
                 case 5:
@@ -183,8 +187,8 @@ public class Main {
                     }while(escolhaSessao < 1 || escolhaSessao > sessao.length);
                     sessaoEscolhida = sessao[escolhaSessao - 1];
                     System.out.println("Sessão Escolhida: " + sessaoEscolhida.getHorario());
+                    System.out.println();
                     break;
-
                 case 6:
                     //Comprar ingresso
                     while(filmeEscolhido == null || salaEscolhida == null || sessaoEscolhida == null){
@@ -272,12 +276,12 @@ public class Main {
                     boolean sucessoPagamento = pagamento.pagar(45.0); // ex: valor fixo ou variável
                     if (sucessoPagamento) {
                         ingressoComprado = true;
-                        System.out.println("Cinema.Pagamento.CartaoDebito.Pagamento realizado com sucesso!");
+                        System.out.println("Pagamento realizado com sucesso!");
                         cliente.comprarIngresso();
                     } else {
-                        System.out.println("Cinema.Pagamento.CartaoDebito.Pagamento recusado!");
+                        System.out.println("Pagamento recusado!");
                     }
-
+                    System.out.println();
                     break;
                 case 7:
                     //Cancelar Reserva
@@ -324,6 +328,7 @@ public class Main {
                     assentoReservado = -1;
 
                     cliente.cancelarReserva();
+                    System.out.println();
                     break;
                 case 8:
                     /*Uma Thread consiste em criar linhas de execução em paralelo dentro do mesmo código
@@ -371,8 +376,6 @@ public class Main {
 
                 case 0:
                     System.out.println("Encerrando...");
-                default:
-                    System.out.println("Opção inválida!");
             }
         }while(op != 0);
     }
