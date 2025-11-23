@@ -11,18 +11,6 @@ public class CartaoCredito implements Cartao{
         this.CVV = CVV;
     }
 
-    public String getNumeroCartao() {
-        return numeroCartao;
-    }
-
-    public String getValidade() {
-        return validade;
-    }
-
-    public String getCVV() {
-        return CVV;
-    }
-
     @Override
     public boolean validarcartao() {
         if(numeroCartao.length()!=16){

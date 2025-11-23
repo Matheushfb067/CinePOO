@@ -49,23 +49,24 @@ public class Sala {
         return false; // número não encontrado ou já ocupado
     }
 
-    public boolean liberarAssentoPorNumero(int numAssento){
-        int contador = 1;
-
+    public boolean liberarAssentoPorNumero(int numeroAssento) {
         for (int i = 0; i < assentos.length; i++) {
             for (int j = 0; j < assentos[0].length; j++) {
+                if (assentos[i][j] == -1) {
 
-                // Se achar o assento ocupado
-                if (assentos[i][j] == -1 && contador == numAssento) {
-                    assentos[i][j] = numAssento; // volta para o número original
-                    return true;
+                    // calcular qual número deveria estar nessa posição
+                    int numeroCorreto = i * assentos[0].length + j + 1;
+
+                    if (numeroCorreto == numeroAssento) {
+                        assentos[i][j] = numeroAssento; // restaurar
+                        return true;
+                    }
                 }
-                contador++;
             }
         }
-
         return false;
     }
+
 
     public void imprimirMapa() {
         System.out.println("========================= MAPA DA SALA " + idSala + " =========================");
@@ -84,14 +85,6 @@ public class Sala {
 
     public int getCapacidade() {
         return capacidade;
-    }
-
-    public boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 
     public int getIdSala(){

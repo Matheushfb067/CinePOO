@@ -42,10 +42,11 @@ public class Main {
             System.out.println("===== CINE POO: Escolha uma Opção =====");
             System.out.println("1 - Filmes em Cartaz ");
             System.out.println("2 - Escolher Filme ");
-            System.out.println("3 - Escolher Sala");
-            System.out.println("4 - Escolher Sessão");
-            System.out.println("5 - Comprar Ingressos");
-            System.out.println("6 - Cancelar Reserva");
+            System.out.println("3 - Mostrar Informações do Filme");
+            System.out.println("4 - Escolher Sala");
+            System.out.println("5 - Escolher Sessão");
+            System.out.println("6 - Comprar Ingressos");
+            System.out.println("7 - Cancelar Reserva");
             System.out.println("0 - Sair");
             System.out.println("==========================================");
 
@@ -86,8 +87,17 @@ public class Main {
                     filmeEscolhido = filmes[escolhaFilme - 1];
                     System.out.println("Filme Escolhido: " + filmeEscolhido.getTitulo());
                     break;
-
                 case 3:
+                    //Mostrar informações do filme
+                    if (filmeEscolhido == null) {
+                        System.out.println("Nenhum filme selecionado!");
+                    } else {
+                        System.out.println("===== INFORMAÇÕES DO FILME =====");
+                        filmeEscolhido.mostrarInfo();
+                        System.out.println("================================");
+                    }
+                    break;
+                case 4:
                     //Escolher sala
 
                     int escolhaSala;
@@ -121,13 +131,13 @@ public class Main {
                         }
                     }while(!sucesso);
 
-                    // 🔥 AQUI: salvar automaticamente o assento escolhido
+                    //salvar automaticamente o assento escolhido
                     assentoReservado = numAssento;
 
                     System.out.println("Assento reservado com sucesso!");
                     break;
 
-                case 4:
+                case 5:
                     //Escolher sessão
                     int escolhaSessao = -1;
 
@@ -150,7 +160,7 @@ public class Main {
                     System.out.println("Sessão Escolhida: " + sessaoEscolhida.getHorario());
                     break;
 
-                case 5:
+                case 6:
                     //Comprar ingresso
                     while(filmeEscolhido == null || salaEscolhida == null || sessaoEscolhida == null){
                         System.out.println("Você ainda não selecionou todas as opções!");
@@ -238,12 +248,13 @@ public class Main {
                     if (sucessoPagamento) {
                         ingressoComprado = true;
                         System.out.println("Pagamento realizado com sucesso!");
+                        cliente.comprarIngresso();
                     } else {
                         System.out.println("Pagamento recusado!");
                     }
 
                     break;
-                case 6:
+                case 7:
                     //Cancelar Reserva
                     if (filmeEscolhido == null || salaEscolhida == null || sessaoEscolhida == null) {
                         System.out.println("Nenhuma reserva encontrada para cancelar!");
@@ -287,7 +298,7 @@ public class Main {
                     ingressoComprado = false;
                     assentoReservado = -1;
 
-                    System.out.println("Reserva cancelada com sucesso!");
+                    cliente.cancelarReserva();
                     break;
 
                 case 0:

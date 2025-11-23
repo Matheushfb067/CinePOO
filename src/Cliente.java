@@ -16,7 +16,7 @@ public class Cliente {
     }
 
     public void cancelarReserva(){
-        System.out.println("Reserva cancelada para o cliente " + nome);
+        System.out.println("Reserva cancelada com sucesso para o cliente: " + nome + "!");
     }
 
     //Getters
