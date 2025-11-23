@@ -1,9 +1,10 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Main {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        int op;
+        int op = -1;
 
         Filme [] filmes = {
                 new Filme("Wicked: Parte 2", 120, "Fantasia", 12),
@@ -49,6 +50,16 @@ public class Main {
             System.out.println("7 - Cancelar Reserva");
             System.out.println("0 - Sair");
             System.out.println("==========================================");
+
+            //Se na entrada 'op' o usuário digitar uma letra, símbolo ou string, seu programa cai em InputMismatchException e encerra.
+            //InputMismatchException é uma exceção que acontece quando o usuário digita um valor que não combina com o tipo esperado na entrada
+            try {
+                op = entrada.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida! Digite apenas números.");
+                entrada.nextLine();
+                continue;
+            }
 
             op = entrada.nextInt();
 
@@ -114,17 +125,23 @@ public class Main {
                     entrada.nextLine(); // evitar pular entrada
                     salaEscolhida = salas[escolhaSala - 1];
 
-                    int numAssento;
+                    int numAssento = -1;
 
                     //Loop de Escolha do Assento
                     boolean sucesso;
                     do {
-
                         salaEscolhida.imprimirMapa();
                         System.out.println("Digite o numero do assento desejado: ");
-                        numAssento = entrada.nextInt();
-
-                        sucesso = salaEscolhida.ocuparAssentoPorNumero(numAssento);
+                        //Mesma validação anterior, previnindo de não digitar uma entrada de tipo diferente da necessaria
+                        try{
+                            numAssento = entrada.nextInt();
+                            sucesso = salaEscolhida.ocuparAssentoPorNumero(numAssento);
+                        }catch (InputMismatchException e) {
+                            System.out.println("Erro: digite apenas números!");
+                            entrada.nextLine();
+                            sucesso = false;
+                            continue; //volta o loop para o inicio
+                        }
 
                         if (!sucesso){
                             System.out.println("Assento já ocupado! Tente novamente.");
