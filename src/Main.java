@@ -35,6 +35,8 @@ public class Main {
         Sala salaEscolhida = null;
         Sessao sessaoEscolhida = null;
         boolean ingressoComprado = false;
+        int assentoReservado = -1;
+
 
         do {
             System.out.println("===== CINE POO: Escolha uma Opção =====");
@@ -93,12 +95,13 @@ public class Main {
                     System.out.println("============= Escolha um Sala ===========");
 
                     for (int i = 0; i < salas.length; i++) {
-                        System.out.println((i+1) + "Sala " + salas[i].getIdSala() + " (" + salas[i].getCapacidade() + " lugares)");
+                        System.out.println((i+1) + " Sala " + salas[i].getIdSala() + " (" + salas[i].getCapacidade() + " lugares)");
                     }
 
                     System.out.println("==========================================");
 
                     escolhaSala = entrada.nextInt();
+                    entrada.nextLine(); // evitar pular entrada
                     salaEscolhida = salas[escolhaSala - 1];
 
                     int numAssento;
@@ -117,6 +120,10 @@ public class Main {
                             System.out.println("Assento já ocupado! Tente novamente.");
                         }
                     }while(!sucesso);
+
+                    // 🔥 AQUI: salvar automaticamente o assento escolhido
+                    assentoReservado = numAssento;
+
                     System.out.println("Assento reservado com sucesso!");
                     break;
 
@@ -238,8 +245,50 @@ public class Main {
                     break;
                 case 6:
                     //Cancelar Reserva
+                    if (filmeEscolhido == null || salaEscolhida == null || sessaoEscolhida == null) {
+                        System.out.println("Nenhuma reserva encontrada para cancelar!");
+                        break;
+                    }
 
+                    System.out.println("===== CONFIRMAR CANCELAMENTO =====");
+                    System.out.println("Filme: " + filmeEscolhido.getTitulo());
+                    System.out.println("Sala: " + salaEscolhida.getIdSala());
+                    System.out.println("Sessão: " + sessaoEscolhida.getHorario());
+                    System.out.println("Tem certeza que deseja cancelar a reserva? (S/N)");
+
+                    String confirm;
+
+                    do{
+                        System.out.print("Tem certeza que deseja cancelar a reserva? (S/N): ");
+                        confirm = entrada.nextLine();
+
+                        if (!confirm.equalsIgnoreCase("S") && !confirm.equalsIgnoreCase("N")) {
+                            System.out.println("Entrada inválida! Digite apenas S ou N.");
+                        }
+
+                    }while(!confirm.equalsIgnoreCase("S") && !confirm.equalsIgnoreCase("N"));
+
+                    if (confirm.equalsIgnoreCase("N")) {
+                        System.out.println("Cancelamento abortado.");
+                        break;
+                    }
+
+                    //Liberação automatica do assento
+                    if (assentoReservado != -1) {
+                        salaEscolhida.liberarAssentoPorNumero(assentoReservado);
+                        System.out.println("Assento " + assentoReservado + " liberado!");
+                    }
+
+                    //Reseta todas as informações guardadas anteriormente!
+                    filmeEscolhido = null;
+                    salaEscolhida = null;
+                    sessaoEscolhida = null;
+                    ingressoComprado = false;
+                    assentoReservado = -1;
+
+                    System.out.println("Reserva cancelada com sucesso!");
                     break;
+
                 case 0:
                     System.out.println("Encerrando...");
                 default:
