@@ -37,7 +37,9 @@ public class Sala {
     }
 
     // Escolher assento pelo número real
-    public boolean ocuparAssentoPorNumero(int numeroAssento) {
+    /*Serve para garantir a segurança das threads, o synchronized serve para informar que a thread deve ser executada dentro deste bloco
+    Se Alice está dentro do bloco, Bob e Carol devem esperar na porta até que Alice saia e libere a chave.*/
+    public synchronized boolean ocuparAssentoPorNumero(int numeroAssento) {
         for (int i = 0; i < assentos.length; i++) {
             for (int j = 0; j < assentos[0].length; j++) {
                 if (assentos[i][j] == numeroAssento) {
