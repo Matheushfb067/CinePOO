@@ -1,12 +1,21 @@
+package cinema.main;
+
 import java.util.Scanner;
 import java.util.InputMismatchException;
+
+import cinema.modelo.Filme;
+import cinema.modelo.Sala;
+import cinema.modelo.Sessao;
+import cinema.modelo.Cliente;
+import cinema.concorrencia.TentativaDeCompra;
+import cinema.pagamento.*;
 
 public class Main {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         int op = -1;
 
-        Filme [] filmes = {
+        Filme[] filmes = {
                 new Filme("Wicked: Parte 2", 120, "Fantasia", 12),
                 new Filme("Truque de mestre - O 3º ato", 112, "Ação", 14),
                 new Filme("Zootopia 2", 107, "Animação", 10),
@@ -15,14 +24,14 @@ public class Main {
                 new Filme("Invocação do Mal 4: O Ultimo Ritual", 136, "Terror", 16),
         };
 
-        Sala [] salas = {
+        Sala[] salas = {
                 new Sala(1, 120, "3D", true),
                 new Sala(2, 100, "2D", true),
                 new Sala(3, 140, "IMAX", true),
                 new Sala(4, 80, "XD", true),
         };
 
-        Sessao [] sessao = {
+        Sessao[] sessao = {
                 new Sessao(1, "22/11/2025", "15h30"),
                 new Sessao(2, "22/11/2025", "17:30"),
                 new Sessao(3, "22/11/2025", "19:30"),
@@ -42,9 +51,9 @@ public class Main {
         do {
             System.out.println("===== CINE POO: Escolha uma Opção =====");
             System.out.println("1 - Filmes em Cartaz ");
-            System.out.println("2 - Escolher Filme ");
-            System.out.println("3 - Mostrar Informações do Filme");
-            System.out.println("4 - Escolher Sala");
+            System.out.println("2 - Escolher Cinema.Modelo.Filme ");
+            System.out.println("3 - Mostrar Informações do Cinema.Modelo.Filme");
+            System.out.println("4 - Escolher Cinema.Modelo.Sala");
             System.out.println("5 - Escolher Sessão");
             System.out.println("6 - Comprar Ingressos");
             System.out.println("7 - Cancelar Reserva");
@@ -77,7 +86,7 @@ public class Main {
                     int escolhaFilme = -1;
 
                     do{
-                        System.out.println("===== Escolha um Filme =====");
+                        System.out.println("===== Escolha um Cinema.Modelo.Filme =====");
 
                         for (int i = 0; i < filmes.length; i++){
                             System.out.println((i + 1) + " " + filmes[i].getTitulo());
@@ -95,7 +104,7 @@ public class Main {
 
 
                     filmeEscolhido = filmes[escolhaFilme - 1];
-                    System.out.println("Filme Escolhido: " + filmeEscolhido.getTitulo());
+                    System.out.println("Cinema.Modelo.Filme Escolhido: " + filmeEscolhido.getTitulo());
                     break;
                 case 3:
                     //Mostrar informações do filme
@@ -112,10 +121,10 @@ public class Main {
 
                     int escolhaSala;
 
-                    System.out.println("============= Escolha um Sala ===========");
+                    System.out.println("============= Escolha um Cinema.Modelo.Sala ===========");
 
                     for (int i = 0; i < salas.length; i++) {
-                        System.out.println((i+1) + " Sala " + salas[i].getIdSala() + " (" + salas[i].getCapacidade() + " lugares)");
+                        System.out.println((i+1) + " Cinema.Modelo.Sala " + salas[i].getIdSala() + " (" + salas[i].getCapacidade() + " lugares)");
                     }
 
                     System.out.println("==========================================");
@@ -197,13 +206,13 @@ public class Main {
                     }
 
                     System.out.println("===== RESUMO DA COMPRA =====");
-                    System.out.println("Filme: " + filmeEscolhido.getTitulo());
-                    System.out.println("Sala: " + salaEscolhida.getIdSala());
+                    System.out.println("Cinema.Modelo.Filme: " + filmeEscolhido.getTitulo());
+                    System.out.println("Cinema.Modelo.Sala: " + salaEscolhida.getIdSala());
                     System.out.println("Sessão: " + sessaoEscolhida.getHorario());
                     System.out.println("Assento reservado!");
                     System.out.println("==========================================");
 
-                    System.out.println("====== Forma de Pagamento ======");
+                    System.out.println("====== Forma de Cinema.Pagamento.CartaoDebito.Pagamento ======");
                     System.out.println("1 - Cartão de Crédito");
                     System.out.println("2 - Cartão de Débito");
                     System.out.println("3 - PIX");
@@ -256,17 +265,17 @@ public class Main {
                             pagamento = new PagamentoDinheiro();
                             break;
                         default:
-                            System.out.println("Forma de Pagamento Invalida!");
+                            System.out.println("Forma de Cinema.Pagamento.CartaoDebito.Pagamento Invalida!");
                             break;
                     }
 
                     boolean sucessoPagamento = pagamento.pagar(45.0); // ex: valor fixo ou variável
                     if (sucessoPagamento) {
                         ingressoComprado = true;
-                        System.out.println("Pagamento realizado com sucesso!");
+                        System.out.println("Cinema.Pagamento.CartaoDebito.Pagamento realizado com sucesso!");
                         cliente.comprarIngresso();
                     } else {
-                        System.out.println("Pagamento recusado!");
+                        System.out.println("Cinema.Pagamento.CartaoDebito.Pagamento recusado!");
                     }
 
                     break;
@@ -278,8 +287,8 @@ public class Main {
                     }
 
                     System.out.println("===== CONFIRMAR CANCELAMENTO =====");
-                    System.out.println("Filme: " + filmeEscolhido.getTitulo());
-                    System.out.println("Sala: " + salaEscolhida.getIdSala());
+                    System.out.println("Cinema.Modelo.Filme: " + filmeEscolhido.getTitulo());
+                    System.out.println("Cinema.Modelo.Sala: " + salaEscolhida.getIdSala());
                     System.out.println("Sessão: " + sessaoEscolhida.getHorario());
 
                     entrada.nextLine();
@@ -324,18 +333,18 @@ public class Main {
                     System.out.println("===== SIMULANDO CONCORRÊNCIA DE COMPRAS =====");
 
                     // Definição da sala e assento de conflito entre os clientes alice, bob e carol.
-                    Sala salaTeste = salas[0]; // Sala 1
+                    Sala salaTeste = salas[0]; // Cinema.Modelo.Sala 1
                     int assentoConflito = 5;
 
-                    System.out.println("Clientes tentando reservar o Assento " + assentoConflito + " na Sala " + salaTeste.getIdSala());
+                    System.out.println("Clientes tentando reservar o Assento " + assentoConflito + " na Cinema.Modelo.Sala " + salaTeste.getIdSala());
 
                     //Criação das tarefas - objetos que irão executar em conflito
-                    Runnable tarefa1 = new TentativaDeCompra("Cliente Alice", salaTeste, assentoConflito);
-                    Runnable tarefa2 = new TentativaDeCompra("Cliente Bob", salaTeste, assentoConflito);
-                    Runnable tarefa3 = new TentativaDeCompra("Cliente Carol", salaTeste, assentoConflito);
+                    Runnable tarefa1 = new TentativaDeCompra("Cinema.Modelo.Cliente Alice", salaTeste, assentoConflito);
+                    Runnable tarefa2 = new TentativaDeCompra("Cinema.Modelo.Cliente Bob", salaTeste, assentoConflito);
+                    Runnable tarefa3 = new TentativaDeCompra("Cinema.Modelo.Cliente Carol", salaTeste, assentoConflito);
 
                     // Cria as Threads e associa as tarefas a elas
-                    Thread t1 = new Thread(tarefa1);//objetos que implementam a interface Runnable são as instâncias da classe TentativaDeCompra
+                    Thread t1 = new Thread(tarefa1);//objetos que implementam a interface Runnable são as instâncias da classe Cinema.Concorrencia.TentativaDeCompra
                     Thread t2 = new Thread(tarefa2);
                     Thread t3 = new Thread(tarefa3);
 

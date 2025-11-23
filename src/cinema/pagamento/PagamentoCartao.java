@@ -1,4 +1,6 @@
-public class PagamentoCartao implements Pagamento{
+package cinema.pagamento;
+
+public class PagamentoCartao implements Pagamento {
 
     private Cartao cartao;
 

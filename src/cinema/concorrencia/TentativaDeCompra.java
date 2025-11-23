@@ -1,3 +1,6 @@
+package cinema.concorrencia;
+import cinema.modelo.Sala;
+
 public class TentativaDeCompra implements Runnable{
     //O runnable serve para informar ao java que a classe contem um código que pode ser executado por uma thread!
     private String nomeCliente;

@@ -1,3 +1,5 @@
+package cinema.modelo;
+
 import java.util.Random;
 
 public class Sala {

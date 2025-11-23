@@ -1,4 +1,6 @@
-public class CartaoCredito implements Cartao{
+package cinema.pagamento;
+
+public class CartaoCredito implements Cartao {
 
     //Uma interface não pode ter contrutor por isso deve ter seus proprios atributos
     private String numeroCartao;

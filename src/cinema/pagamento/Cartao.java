@@ -1,3 +1,5 @@
+package cinema.pagamento;
+
 public abstract interface Cartao {
 
     public abstract boolean validarcartao();

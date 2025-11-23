@@ -1,3 +1,5 @@
+package cinema.modelo;
+
 public class Sessao {
 
     // Atributos da sessão

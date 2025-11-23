@@ -1,3 +1,5 @@
+package cinema.pagamento;
+
 public class CartaoDebito implements Cartao {
 
     //Uma interface não pode ter contrutor por isso deve ter seus proprios atributos
@@ -49,4 +51,6 @@ public class CartaoDebito implements Cartao {
     public String getCVV(){
         return CVV;
     }
+
+
 }
