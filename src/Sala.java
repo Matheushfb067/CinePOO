@@ -49,6 +49,24 @@ public class Sala {
         return false; // número não encontrado ou já ocupado
     }
 
+    public boolean liberarAssentoPorNumero(int numAssento){
+        int contador = 1;
+
+        for (int i = 0; i < assentos.length; i++) {
+            for (int j = 0; j < assentos[0].length; j++) {
+
+                // Se achar o assento ocupado
+                if (assentos[i][j] == -1 && contador == numAssento) {
+                    assentos[i][j] = numAssento; // volta para o número original
+                    return true;
+                }
+                contador++;
+            }
+        }
+
+        return false;
+    }
+
     public void imprimirMapa() {
         System.out.println("========================= MAPA DA SALA " + idSala + " =========================");
         for (int i = 0; i < assentos.length; i++) {
@@ -78,45 +96,5 @@ public class Sala {
 
     public int getIdSala(){
         return idSala;
-    }
-
-    // Método que retorna a porcentagem ocupada em uma sala
-    public double taxaOcupacao(int ingressosVendidos) {
-        double taxa;
-
-        if(ingressosVendidos <= 0) {
-            taxa = 0.0;
-        }
-        else{
-            taxa = ((double)ingressosVendidos / getCapacidade()) * 100.0;
-        }
-        return taxa;
-    }
-
-    // Método que retorna quantos assentos vazios há na sala
-    public int assentosVagos(int ingressosVendidos) {
-        int assentosVagos = getCapacidade() - ingressosVendidos;
-
-        return assentosVagos;
-    }
-
-    // Método que verifica a disponibilidade (status) da sala
-    public void disponibilidade(boolean status) {
-        if(getStatus() == false) {
-            System.out.println("Sala indisponível");
-        }
-        else{
-            System.out.println("Sala disponível");
-        }
-    }
-
-    // Método que coloca a sala em manutenção (status == false / indisponível)
-    public void emManutencao() {
-        setStatus(false);
-    }
-
-    // Método que finaliza a manutenção da sala (status == true / disponível)
-    public void fimManutencao() {
-        setStatus(true);
     }
 }
