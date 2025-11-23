@@ -9,6 +9,9 @@ import cinema.modelo.Sessao;
 import cinema.modelo.Cliente;
 import cinema.concorrencia.TentativaDeCompra;
 import cinema.pagamento.*;
+import cinema.modelo.ClienteComum;
+import cinema.modelo.ClienteEstudante;
+import cinema.modelo.ClienteIdoso;
 
 public class Main {
     public static void main(String[] args) {
@@ -55,9 +58,10 @@ public class Main {
             System.out.println("3 - Mostrar Informações do Filme");
             System.out.println("4 - Escolher Sala");
             System.out.println("5 - Escolher Sessão");
-            System.out.println("6 - Comprar Ingressos");
-            System.out.println("7 - Cancelar Reserva");
-            System.out.println("8 - Comcorrencia de Compras (THREADS)");
+            System.out.println("6 - Selecione o Tipo de Cliente ");
+            System.out.println("7 - Comprar Ingressos");
+            System.out.println("8 - Cancelar Reserva");
+            System.out.println("9 - Comcorrencia de Compras (THREADS)");
             System.out.println("0 - Sair");
             System.out.println("==========================================");
 
@@ -190,6 +194,51 @@ public class Main {
                     System.out.println();
                     break;
                 case 6:
+                    //Selecionar tipo de Cliente
+                    System.out.println("===== SELECIONAR TIPO DE CLIENTE =====");
+                    System.out.println("1 - Cliente Comum (sem desconto)");
+                    System.out.println("2 - Estudante (50% de desconto)");
+                    System.out.println("3 - Idoso (50% de desconto)");
+                    System.out.print("Escolha o tipo de cliente: ");
+                    System.out.println("==========================================");
+                    System.out.println();
+
+                    int tipoCliente = entrada.nextInt();
+                    entrada.nextLine();
+
+                    // Guardar informações do cliente atual
+                    String nome = cliente.getNome();
+                    String cpf = cliente.getCpf();
+                    String email = cliente.getEmail();
+                    String telefone = cliente.getTelefone();
+
+                    switch (tipoCliente) {
+                        case 1:
+                            cliente = new ClienteComum(nome, cpf, email, telefone);
+                            System.out.println("Tipo de cliente alterado para: Cliente Comum");
+                            break;
+                        case 2:
+                            System.out.print("Instituição de ensino: ");
+                            String instituicao = entrada.nextLine();
+                            System.out.print("Número de matrícula: ");
+                            String matricula = entrada.nextLine();
+                            cliente = new ClienteEstudante(nome, cpf, email, telefone, instituicao, matricula);
+                            System.out.println("Tipo de cliente alterado para: Estudante");
+                            break;
+                        case 3:
+                            System.out.print("Data de nascimento (DD/MM/AAAA): ");
+                            String dataNasc = entrada.nextLine();
+                            cliente = new ClienteIdoso(nome, cpf, email, telefone, dataNasc);
+                            System.out.println("Tipo de cliente alterado para: Idoso");
+                            break;
+                        default:
+                            System.out.println("Opção inválida! Mantendo tipo atual.");
+                            break;
+                    }
+                    System.out.println("==========================================");
+                    System.out.println();
+                    break;
+                case 7:
                     //Comprar ingresso
                     while(filmeEscolhido == null || salaEscolhida == null || sessaoEscolhida == null){
                         System.out.println("Você ainda não selecionou todas as opções!");
@@ -216,7 +265,7 @@ public class Main {
                     System.out.println("Assento reservado!");
                     System.out.println("==========================================");
 
-                    System.out.println("====== Forma de Cinema.Pagamento.CartaoDebito.Pagamento ======");
+                    System.out.println("====== Forma de Pagamento ======");
                     System.out.println("1 - Cartão de Crédito");
                     System.out.println("2 - Cartão de Débito");
                     System.out.println("3 - PIX");
@@ -269,11 +318,16 @@ public class Main {
                             pagamento = new PagamentoDinheiro();
                             break;
                         default:
-                            System.out.println("Forma de Cinema.Pagamento.CartaoDebito.Pagamento Invalida!");
+                            System.out.println("Forma de Pagamento Invalida!");
                             break;
                     }
 
-                    boolean sucessoPagamento = pagamento.pagar(45.0); // ex: valor fixo ou variável
+                    //Calcula desconto se o cliente for estudante
+                    double valorBase = 45.0;
+                    double valorFinal = cliente.calcularDesconto(valorBase);
+                    System.out.println("Valor do ingresso: R$" + valorFinal);
+                    boolean sucessoPagamento = pagamento.pagar(valorFinal); // ex: valor fixo ou variável
+
                     if (sucessoPagamento) {
                         ingressoComprado = true;
                         System.out.println("Pagamento realizado com sucesso!");
@@ -281,9 +335,8 @@ public class Main {
                     } else {
                         System.out.println("Pagamento recusado!");
                     }
-                    System.out.println();
                     break;
-                case 7:
+                case 8:
                     //Cancelar Reserva
                     if (filmeEscolhido == null || salaEscolhida == null || sessaoEscolhida == null) {
                         System.out.println("Nenhuma reserva encontrada para cancelar!");
@@ -330,7 +383,7 @@ public class Main {
                     cliente.cancelarReserva();
                     System.out.println();
                     break;
-                case 8:
+                case 9:
                     /*Uma Thread consiste em criar linhas de execução em paralelo dentro do mesmo código
 
                     */
@@ -373,7 +426,6 @@ public class Main {
                     salaTeste.imprimirMapa(); // Mostra o mapa final da sala
                     System.out.println("=============================================");
                     break;
-
                 case 0:
                     System.out.println("Encerrando...");
             }
