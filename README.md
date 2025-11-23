@@ -4,7 +4,7 @@
 
 ---
 
-![img_1.png](src/img_1.png)
+![img.png](img.png)
 
 ---
 
@@ -22,9 +22,41 @@
 
 ## 🏗️ Estrutura do Projeto
 
-### O projeto segue uma arquitetura orientada a objetos, organizada em pacotes para separar responsabilidades:  
+### O projeto segue uma arquitetura orientada a objetos, organizada em pacotes para separar responsabilidades:
 
-![img.png](src/img.png)
+```
+CinePOO/
+│
+├── src/
+│   └── cinema/
+│       ├── concorrencia/          # Implementação de threads e concorrência
+│       │   └── TentativaDeCompra.java
+│       │
+│       ├── main/                   # Classe principal com o menu interativo
+│       │   └── Main.java
+│       │
+│       ├── modelo/                 # Classes de domínio (entidades)
+│       │   ├── Cliente.java        # Superclasse
+│       │   ├── ClienteComum.java   # Subclasse - sem desconto
+│       │   ├── ClienteEstudante.java  # Subclasse - 50% desconto
+│       │   ├── ClienteIdoso.java   # Subclasse - 50% desconto
+│       │   ├── Filme.java
+│       │   ├── Sala.java
+│       │   └── Sessao.java
+│       │
+│       └── pagamento/              # Sistema de pagamento (interfaces e implementações)
+│           ├── Cartao.java         # Interface
+│           ├── CartaoCredito.java
+│           ├── CartaoDebito.java
+│           ├── Pagamento.java      # Interface
+│           ├── PagamentoCartao.java
+│           ├── PagamentoDinheiro.java
+│           └── PagamentoPix.java
+│
+├── .gitignore
+├── CinePOO.iml
+└── README.md
+```
 
 ---
 
