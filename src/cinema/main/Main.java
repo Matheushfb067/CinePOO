@@ -62,6 +62,7 @@ public class Main {
             System.out.println("7 - Comprar Ingressos");
             System.out.println("8 - Cancelar Reserva");
             System.out.println("9 - Comcorrencia de Compras (THREADS)");
+            System.out.println("10 - Ver Histórico de Compras");
             System.out.println("0 - Sair");
             System.out.println("==========================================");
 
@@ -332,6 +333,17 @@ public class Main {
                         ingressoComprado = true;
                         System.out.println("Pagamento realizado com sucesso!");
                         cliente.comprarIngresso();
+
+                        //Salva a compra no arquivo!!!
+                        GerenciadorDeArquivos.salvarCompra(
+                                cliente.getNome(),
+                                cliente.getTipoCliente(),
+                                filmeEscolhido.getTitulo(),
+                                "Sala " + salaEscolhida.getIdSala(),
+                                sessaoEscolhida.getHorario(),
+                                assentoReservado,
+                                valorFinal
+                        );
                     } else {
                         System.out.println("Pagamento recusado!");
                     }
@@ -425,6 +437,11 @@ public class Main {
                     System.out.println("--- Concorrência Finalizada ---");
                     salaTeste.imprimirMapa(); // Mostra o mapa final da sala
                     System.out.println("=============================================");
+                    break;
+                case 10:
+                    //Ver Historico de Arquivo:
+                    GerenciadorDeArquivos.lerHistorico();
+                    System.out.println();
                     break;
                 case 0:
                     System.out.println("Encerrando...");
