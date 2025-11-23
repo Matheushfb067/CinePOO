@@ -1,0 +1,9 @@
+========================================
+Data/Hora: 23/11/2025 17:55:19
+Cliente: Chris (Estudante)
+Filme: Wicked: Parte 2
+Sala: Sala 1 | Assento: 1
+Sessão: 19:30
+Valor pago: R$ 22,50
+========================================
+

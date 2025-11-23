@@ -8,7 +8,7 @@ public class PagamentoPix implements Pagamento {
     }
     @Override
     public boolean pagar(double valor) {
-        System.out.println("Cinema.Pagamento.CartaoDebito.Pagamento via PIX de R$" + valor + " usando chave: " + chavePix);
+        System.out.println("Pagamento via PIX de R$" + valor + " usando chave: " + chavePix);
         return true;
     }
 }

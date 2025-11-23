@@ -61,7 +61,7 @@ public class Main {
             System.out.println("6 - Selecione o Tipo de Cliente ");
             System.out.println("7 - Comprar Ingressos");
             System.out.println("8 - Cancelar Reserva");
-            System.out.println("9 - Comcorrencia de Compras (THREADS)");
+            System.out.println("9 - Concorrencia de Compras (THREADS)");
             System.out.println("10 - Ver Histórico de Compras");
             System.out.println("0 - Sair");
             System.out.println("==========================================");
@@ -201,7 +201,6 @@ public class Main {
                     System.out.println("2 - Estudante (50% de desconto)");
                     System.out.println("3 - Idoso (50% de desconto)");
                     System.out.print("Escolha o tipo de cliente: ");
-                    System.out.println("==========================================");
                     System.out.println();
 
                     int tipoCliente = entrada.nextInt();
