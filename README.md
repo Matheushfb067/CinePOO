@@ -4,7 +4,7 @@
 
 ---
 
-![img_1.png](img_1.png)
+![img_1.png](src/img_1.png)
 
 ---
 
@@ -24,7 +24,7 @@
 
 ### O projeto segue uma arquitetura orientada a objetos, organizada em pacotes para separar responsabilidades:  
 
-![img.png](img.png)
+![img.png](src/img.png)
 
 ---
 
