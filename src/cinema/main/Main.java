@@ -291,8 +291,8 @@ public class Main {
                     }
 
                     System.out.println("===== CONFIRMAR CANCELAMENTO =====");
-                    System.out.println("Cinema.Modelo.Filme: " + filmeEscolhido.getTitulo());
-                    System.out.println("Cinema.Modelo.Sala: " + salaEscolhida.getIdSala());
+                    System.out.println("Filme: " + filmeEscolhido.getTitulo());
+                    System.out.println("Sala: " + salaEscolhida.getIdSala());
                     System.out.println("Sessão: " + sessaoEscolhida.getHorario());
 
                     entrada.nextLine();
@@ -341,12 +341,12 @@ public class Main {
                     Sala salaTeste = salas[0]; // Cinema.Modelo.Sala 1
                     int assentoConflito = 5;
 
-                    System.out.println("Clientes tentando reservar o Assento " + assentoConflito + " na Cinema.Modelo.Sala " + salaTeste.getIdSala());
+                    System.out.println("Clientes tentando reservar o Assento " + assentoConflito + " na Sala " + salaTeste.getIdSala());
 
                     //Criação das tarefas - objetos que irão executar em conflito
-                    Runnable tarefa1 = new TentativaDeCompra("Cinema.Modelo.Cliente Alice", salaTeste, assentoConflito);
-                    Runnable tarefa2 = new TentativaDeCompra("Cinema.Modelo.Cliente Bob", salaTeste, assentoConflito);
-                    Runnable tarefa3 = new TentativaDeCompra("Cinema.Modelo.Cliente Carol", salaTeste, assentoConflito);
+                    Runnable tarefa1 = new TentativaDeCompra("Cliente Alice", salaTeste, assentoConflito);
+                    Runnable tarefa2 = new TentativaDeCompra("Cliente Bob", salaTeste, assentoConflito);
+                    Runnable tarefa3 = new TentativaDeCompra("Cliente Carol", salaTeste, assentoConflito);
 
                     // Cria as Threads e associa as tarefas a elas
                     Thread t1 = new Thread(tarefa1);//objetos que implementam a interface Runnable são as instâncias da classe Cinema.Concorrencia.TentativaDeCompra
