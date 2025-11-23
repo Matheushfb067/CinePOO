@@ -6,13 +6,13 @@
 
 ##  📐 UML da Aplicação
 
-![UML.jpeg](UML.jpeg)
+![UML.jpeg](src/UML.jpeg)
 
 ---
 
 ## 🎮 Menu da Aplicação
 
-![img_1.png](img_1.png)
+![img_1.png](src/img_1.png)
 
 ---
 
