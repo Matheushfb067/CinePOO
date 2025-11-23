@@ -5,7 +5,7 @@ public class CartaoCredito implements Cartao{
     private String validade;
     private String CVV;
 
-    public CartaoCredito(String numcart, String validade, String CVV) {
+    public CartaoCredito(String numeroCartao, String validade, String CVV) {
         this.numeroCartao = numeroCartao;
         this.validade = validade;
         this.CVV = CVV;

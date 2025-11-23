@@ -254,13 +254,14 @@ public class Main {
                     System.out.println("Filme: " + filmeEscolhido.getTitulo());
                     System.out.println("Sala: " + salaEscolhida.getIdSala());
                     System.out.println("Sessão: " + sessaoEscolhida.getHorario());
-                    System.out.println("Tem certeza que deseja cancelar a reserva? (S/N)");
+
+                    entrada.nextLine();
 
                     String confirm;
 
                     do{
                         System.out.print("Tem certeza que deseja cancelar a reserva? (S/N): ");
-                        confirm = entrada.nextLine();
+                        confirm = entrada.nextLine().trim();
 
                         if (!confirm.equalsIgnoreCase("S") && !confirm.equalsIgnoreCase("N")) {
                             System.out.println("Entrada inválida! Digite apenas S ou N.");
