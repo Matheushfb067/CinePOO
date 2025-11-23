@@ -4,9 +4,19 @@
 
 ---
 
+##  📐 UML da Aplicação
+
+![UML.jpeg](UML.jpeg)
+
+---
+
+## 🎮 Menu da Aplicação
+
 ![img_1.png](img_1.png)
 
 ---
+
+
 
 ## 💻 Funcionalidades Principais
 

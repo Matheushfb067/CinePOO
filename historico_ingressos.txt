@@ -7,3 +7,21 @@ Sessão: 19:30
 Valor pago: R$ 22,50
 ========================================
 
+========================================
+Data/Hora: 23/11/2025 18:31:07
+Cliente: Chris (Estudante)
+Filme: Wicked: Parte 2
+Sala: Sala 1 | Assento: 2
+Sessão: 19:30
+Valor pago: R$ 22,50
+========================================
+
+========================================
+Data/Hora: 23/11/2025 18:46:06
+Cliente: Chris (Estudante)
+Filme: Truque de mestre - O 3º ato
+Sala: Sala 1 | Assento: 2
+Sessão: 19:30
+Valor pago: R$ 22,50
+========================================
+
