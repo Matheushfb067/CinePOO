@@ -1,8 +1,8 @@
 public class Cliente {
-    protected String nome;
-    protected String cpf;
-    protected String email;
-    protected String telefone;
+    private String nome;
+    private String cpf;
+    private String email;
+    private String telefone;
 
     public Cliente( String nome, String cpf, String email, String telefone) {
         this.nome = nome;
@@ -17,10 +17,9 @@ public class Cliente {
 
     public void cancelarReserva(){
         System.out.println("Reserva cancelada para o cliente " + nome);
-
     }
 
-    //Getters e setters
+    //Getters
     public String getNome() { return nome; }
     public String getCpf() { return  cpf; }
     public String getEmail() { return email; }

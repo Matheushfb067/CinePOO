@@ -1,15 +1,18 @@
 public class CartaoCredito implements Cartao{
-    private String numcart;
+
+    //Uma interface não pode ter contrutor por isso deve ter seus proprios atributos
+    private String numeroCartao;
     private String validade;
     private String CVV;
+
     public CartaoCredito(String numcart, String validade, String CVV) {
-        this.numcart = numcart;
+        this.numeroCartao = numeroCartao;
         this.validade = validade;
         this.CVV = CVV;
     }
 
-    public String getNumcart() {
-        return numcart;
+    public String getNumeroCartao() {
+        return numeroCartao;
     }
 
     public String getValidade() {
@@ -22,10 +25,10 @@ public class CartaoCredito implements Cartao{
 
     @Override
     public boolean validarcartao() {
-        if(numcart.length()!=16){
+        if(numeroCartao.length()!=16){
             return false;
         }
-        if(!numcart.matches("\\d{16}")){
+        if(!numeroCartao.matches("\\d{16}")){
             return false;}
         char ultimodigito=CVV.charAt(CVV.length()-1);
         if(ultimodigito%2!=0){

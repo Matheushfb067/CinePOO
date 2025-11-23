@@ -1,12 +1,12 @@
 public class PagamentoPix implements Pagamento{
-    private String chavepix;
+    private String chavePix;
 
     public PagamentoPix(String chavepix) {
-        this.chavepix = chavepix;
+        this.chavePix = chavepix;
     }
     @Override
     public boolean pagar(double valor) {
-        System.out.println("Pagamento via PIX de R$" + valor + " usando chave: " + chavepix);
+        System.out.println("Pagamento via PIX de R$" + valor + " usando chave: " + chavePix);
         return true;
     }
 }

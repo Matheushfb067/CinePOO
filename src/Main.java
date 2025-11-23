@@ -37,7 +37,7 @@ public class Main {
         boolean ingressoComprado = false;
 
         do {
-            System.out.println("\n===== CINE POO: Escolha uma Opção =====");
+            System.out.println("===== CINE POO: Escolha uma Opção =====");
             System.out.println("1 - Filmes em Cartaz ");
             System.out.println("2 - Escolher Filme ");
             System.out.println("3 - Escolher Sala");
@@ -64,7 +64,7 @@ public class Main {
                     int escolhaFilme = -1;
 
                     do{
-                        System.out.println("\n===== Escolha um Filme =====");
+                        System.out.println("===== Escolha um Filme =====");
 
                         for (int i = 0; i < filmes.length; i++){
                             System.out.println((i + 1) + " " + filmes[i].getTitulo());
@@ -168,13 +168,25 @@ public class Main {
                     System.out.println("Sala: " + salaEscolhida.getIdSala());
                     System.out.println("Sessão: " + sessaoEscolhida.getHorario());
                     System.out.println("Assento reservado!");
+                    System.out.println("==========================================");
+
+                    System.out.println("====== Forma de Pagamento ======");
+                    System.out.println("1 - Cartão de Crédito");
+                    System.out.println("2 - Cartão de Débito");
+                    System.out.println("3 - PIX");
+                    System.out.println("4 - Dinheiro");
+                    System.out.print("Escolha uma das opções: ");
 
                     int tipoPagamento = entrada.nextInt();
+                    entrada.nextLine(); // limpar buffer
                     Pagamento pagamento = null;
 
+                    /*Os cases devem ficar dentro de chaves já que os atributos criados dentro dos cases
+                    serão utilizados em mais de um case por isso é necessaria a diferença de escopo delimitada
+                    por {}*/
                     switch (tipoPagamento){
-                        case 1:
-                            System.out.println("Número do Cartão: ");
+                        case 1: {
+                            System.out.println("Número do Cartão de Crédito: ");
                             String num = entrada.next();
 
                             System.out.println("Validade (MM/AA): ");
@@ -182,11 +194,51 @@ public class Main {
 
                             System.out.println("CVV: ");
                             String cvv = entrada.next();
+
+                            Cartao credito = new CartaoCredito(num, val, cvv);
+                            pagamento = new PagamentoCartao(credito);
+                            break;
+                        }
+                        case 2: {
+                            System.out.println("Número do Cartão de Débito: ");
+                            String num = entrada.next();
+
+                            System.out.println("Validade (MM/AA): ");
+                            String val = entrada.next();
+
+                            System.out.println("CVV: ");
+                            String cvv = entrada.next();
+
+                            Cartao debito = new CartaoDebito(num, val, cvv);
+                            pagamento = new PagamentoCartao(debito);
+                            break;
+                        }
+                        case 3: {
+                            System.out.println("Digite a chave PIX: ");
+                            String chave = entrada.nextLine();
+                            pagamento = new PagamentoPix(chave);
+                            break;
+                        }
+                        case 4:
+                            pagamento = new PagamentoDinheiro();
+                            break;
+                        default:
+                            System.out.println("Forma de Pagamento Invalida!");
+                            break;
+                    }
+
+                    boolean sucessoPagamento = pagamento.pagar(45.0); // ex: valor fixo ou variável
+                    if (sucessoPagamento) {
+                        ingressoComprado = true;
+                        System.out.println("Pagamento realizado com sucesso!");
+                    } else {
+                        System.out.println("Pagamento recusado!");
                     }
 
                     break;
                 case 6:
                     //Cancelar Reserva
+
                     break;
                 case 0:
                     System.out.println("Encerrando...");
@@ -194,34 +246,5 @@ public class Main {
                     System.out.println("Opção inválida!");
             }
         }while(op != 0);
-
-
-    /*
-        // ======= Cartões =======
-        Cartao cartaoCredito = new CartaoCredito("1234567812345678", "12/25", "124"); // último dígito do CVV par
-        Cartao cartaoDebito = new CartaoDebito("8765432187654321", "11/26", "135");   // último dígito do CVV ímpar
-
-        Pagamento pagamentoCredito = new PagamentoCartao(cartaoCredito);
-        Pagamento pagamentoDebito = new PagamentoCartao(cartaoDebito);
-
-        // ======= PIX =======
-        Pagamento pagamentoPix = new PagamentoPix("meuemail@teste.com");
-
-        // ======= Dinheiro =======
-        Pagamento pagamentoDinheiro = new PagamentoDinheiro();
-
-        // ======= Testando pagamentos =======
-        System.out.println("=== Teste Cartão de Crédito ===");
-        pagamentoCredito.pagar(150.0);
-
-        System.out.println("\n=== Teste Cartão de Débito ===");
-        pagamentoDebito.pagar(80.0);
-
-        System.out.println("\n=== Teste PIX ===");
-        pagamentoPix.pagar(50.0);
-
-        System.out.println("\n=== Teste Dinheiro ===");
-        pagamentoDinheiro.pagar(30.0);
-        */
     }
 }
