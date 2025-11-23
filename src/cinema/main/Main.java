@@ -87,7 +87,7 @@ public class Main {
                     int escolhaFilme = -1;
 
                     do{
-                        System.out.println("===== Escolha um Cinema.Modelo.Filme =====");
+                        System.out.println("===== Escolha um Filme =====");
 
                         for (int i = 0; i < filmes.length; i++){
                             System.out.println((i + 1) + " " + filmes[i].getTitulo());
@@ -210,8 +210,8 @@ public class Main {
                     }
 
                     System.out.println("===== RESUMO DA COMPRA =====");
-                    System.out.println("Cinema.Modelo.Filme: " + filmeEscolhido.getTitulo());
-                    System.out.println("Cinema.Modelo.Sala: " + salaEscolhida.getIdSala());
+                    System.out.println("Filme: " + filmeEscolhido.getTitulo());
+                    System.out.println("Sala: " + salaEscolhida.getIdSala());
                     System.out.println("Sessão: " + sessaoEscolhida.getHorario());
                     System.out.println("Assento reservado!");
                     System.out.println("==========================================");
@@ -338,7 +338,7 @@ public class Main {
                     System.out.println("===== SIMULANDO CONCORRÊNCIA DE COMPRAS =====");
 
                     // Definição da sala e assento de conflito entre os clientes alice, bob e carol.
-                    Sala salaTeste = salas[0]; // Cinema.Modelo.Sala 1
+                    Sala salaTeste = salas[0]; //Sala 1
                     int assentoConflito = 5;
 
                     System.out.println("Clientes tentando reservar o Assento " + assentoConflito + " na Sala " + salaTeste.getIdSala());
