@@ -3,8 +3,7 @@ package cinema.modelo;
 public class ClienteIdoso extends Cliente {
     private String dataNascimento;
 
-    public ClienteIdoso(String nome, String cpf, String email, String telefone,
-                        String dataNascimento) {
+    public ClienteIdoso(String nome, String cpf, String email, String telefone, String dataNascimento) {
         super(nome, cpf, email, telefone);
         this.tipoCliente = "Idoso";
         this.dataNascimento = dataNascimento;

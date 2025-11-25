@@ -6,7 +6,7 @@
 
 ##  📐 UML da Aplicação
 
-![UML.jpeg](src/UML.jpeg)
+![img.png](img.png)
 
 ---
 

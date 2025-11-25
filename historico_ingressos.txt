@@ -25,3 +25,12 @@ Sessão: 19:30
 Valor pago: R$ 22,50
 ========================================
 
+========================================
+Data/Hora: 25/11/2025 11:35:52
+Cliente: Chris (Comum)
+Filme: O Hobbit: A Desolação de Smaug
+Sala: Sala 3 | Assento: 3
+Sessão: 19:30
+Valor pago: R$ 45,00
+========================================
+
